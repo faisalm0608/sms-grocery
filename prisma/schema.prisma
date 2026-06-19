@@ -1,0 +1,83 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id              String         @id @default(uuid())
+  barcode         String?        @unique
+  name            String
+  image           String?        // URL or description path
+  description     String?
+  category        String
+  purchasePrice   Float          // Cost of item from supplier
+  sellingPrice    Float          // Customer's buying price
+  stockQuantity   Int            @default(0)
+  reorderLevel    Int            @default(5)
+  supplierName    String?
+  expiryDate      DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  orderItems      OrderItem[]
+  inventoryTxns   InventoryTxn[]
+}
+
+model Order {
+  id              String         @id
+  customerName    String
+  customerMobile  String
+  customerAddress String
+  pickupTime      String?        // Pickup time slot chosen by the user
+  totalAmount     Float
+  tax             Float          @default(0)
+  discount        Float          @default(0)
+  status          String         @default("PENDING") // PENDING, ACCEPTED, PACKING, READY_FOR_PICKUP, COMPLETED, CANCELLED
+  paymentStatus   String         @default("PENDING") // PENDING, COMPLETED
+  upiTxnId        String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  items           OrderItem[]
+}
+
+model OrderItem {
+  id              String         @id @default(uuid())
+  orderId         String
+  productId       String
+  quantity        Int
+  purchasePrice   Float          // Snapshotted purchase price for accurate historical profit tracking
+  sellingPrice    Float          // Snapshotted selling price
+  order           Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product         Product        @relation(fields: [productId], references: [id])
+}
+
+model Supplier {
+  id              String         @id @default(uuid())
+  name            String         @unique
+  contactNumber   String
+  address         String?
+  createdAt       DateTime       @default(now())
+}
+
+model Customer {
+  mobileNumber    String         @id // Unique identifier for customers is mobile
+  name            String
+  address         String?
+  totalSpend      Float          @default(0)
+  loyaltyPoints   Int            @default(0)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+model InventoryTxn {
+  id              String         @id @default(uuid())
+  productId       String
+  quantity        Int
+  type            String         // STOCK_IN, STOCK_OUT
+  reason          String?        // PURCHASE, ADJ_IN, ADJ_OUT, SALE, EXPIRED
+  createdAt       DateTime       @default(now())
+  product         Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
+}

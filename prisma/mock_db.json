@@ -1,0 +1,1941 @@
+{
+  "products": [
+    {
+      "id": "prod-f&v-1",
+      "barcode": "8901234000010",
+      "name": "Fresh Kashmiri Apples (Premium)",
+      "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600&auto=format&fit=crop&q=60",
+      "description": "Crisp, sweet, and handpicked premium Kashmiri apples. Rich in antioxidants.",
+      "category": "Fruits & Vegetables",
+      "purchasePrice": 130,
+      "sellingPrice": 180,
+      "stockQuantity": 45,
+      "reorderLevel": 10,
+      "supplierName": "Thanjavur Fresh Farm Traders",
+      "expiryDate": "2026-07-05",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-f&v-2",
+      "barcode": "8901234000027",
+      "name": "Organic Tomatoes (Local)",
+      "image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop&q=60",
+      "description": "Farm-fresh organic red tomatoes, ideal for curries, salads, and sauces.",
+      "category": "Fruits & Vegetables",
+      "purchasePrice": 20,
+      "sellingPrice": 35,
+      "stockQuantity": 8,
+      "reorderLevel": 15,
+      "supplierName": "Thanjavur Fresh Farm Traders",
+      "expiryDate": "2026-06-25",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-f&v-3",
+      "barcode": "8901234000034",
+      "name": "Fresh Cavendish Bananas (Robusta)",
+      "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&auto=format&fit=crop&q=60",
+      "description": "Sweet, fully ripe yellow bananas. Excellent source of potassium.",
+      "category": "Fruits & Vegetables",
+      "purchasePrice": 35,
+      "sellingPrice": 50,
+      "stockQuantity": 60,
+      "reorderLevel": 10,
+      "supplierName": "Thanjavur Fresh Farm Traders",
+      "expiryDate": "2026-06-22",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-f&v-4",
+      "barcode": "8901234000041",
+      "name": "Organic Potatoes (Jyoti)",
+      "image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop&q=60",
+      "description": "Versatile potatoes sourced directly from farmers, stored under optimal conditions.",
+      "category": "Fruits & Vegetables",
+      "purchasePrice": 18,
+      "sellingPrice": 28,
+      "stockQuantity": 120,
+      "reorderLevel": 30,
+      "supplierName": "Thanjavur Fresh Farm Traders",
+      "expiryDate": "2026-08-10",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-dairy-1",
+      "barcode": "8901262010043",
+      "name": "Amul Butter 500g",
+      "image": "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=60",
+      "description": "Utterly Butterly Delicious pasteurized salted butter from Amul.",
+      "category": "Dairy, Bread & Eggs",
+      "purchasePrice": 220,
+      "sellingPrice": 275,
+      "stockQuantity": 25,
+      "reorderLevel": 8,
+      "supplierName": "Amul Dairy Distributors",
+      "expiryDate": "2026-10-15",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-dairy-2",
+      "barcode": "8901262020011",
+      "name": "Amul Taaza Toned Milk 1L",
+      "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=60",
+      "description": "Homogenized toned long-life milk. No preservatives, needs no boiling.",
+      "category": "Dairy, Bread & Eggs",
+      "purchasePrice": 60,
+      "sellingPrice": 72,
+      "stockQuantity": 50,
+      "reorderLevel": 15,
+      "supplierName": "Amul Dairy Distributors",
+      "expiryDate": "2026-07-20",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-dairy-3",
+      "barcode": "8901262020226",
+      "name": "Amul Masti Spiced Buttermilk 200ml",
+      "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=60",
+      "description": "Refreshing spiced buttermilk with cumin, ginger, and green chillies.",
+      "category": "Dairy, Bread & Eggs",
+      "purchasePrice": 12,
+      "sellingPrice": 15,
+      "stockQuantity": 80,
+      "reorderLevel": 20,
+      "supplierName": "Amul Dairy Distributors",
+      "expiryDate": "2026-07-10",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-dairy-4",
+      "barcode": "8901262030010",
+      "name": "Fresh Farm Eggs (Pack of 6)",
+      "image": "https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=600&auto=format&fit=crop&q=60",
+      "description": "Farm-fresh, clean, high-protein white eggs from local poultry farms.",
+      "category": "Dairy, Bread & Eggs",
+      "purchasePrice": 32,
+      "sellingPrice": 48,
+      "stockQuantity": 30,
+      "reorderLevel": 5,
+      "supplierName": "Thanjavur Fresh Farm Traders",
+      "expiryDate": "2026-06-30",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-snack-1",
+      "barcode": "8902083011019",
+      "name": "Lays Potato Chips - Magic Masala 50g",
+      "image": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=60",
+      "description": "Crispy potato chips infused with the magical spices of India.",
+      "category": "Munchies & Chips",
+      "purchasePrice": 16,
+      "sellingPrice": 20,
+      "stockQuantity": 110,
+      "reorderLevel": 20,
+      "supplierName": "ITC Consumer Goods Ltd",
+      "expiryDate": "2026-11-30",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-snack-2",
+      "barcode": "8902083011026",
+      "name": "Kurkure Masala Munch 90g",
+      "image": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=60",
+      "description": "Crunchy, tasty, and spicy puffed corn snack with traditional spices.",
+      "category": "Munchies & Chips",
+      "purchasePrice": 24,
+      "sellingPrice": 30,
+      "stockQuantity": 3,
+      "reorderLevel": 15,
+      "supplierName": "ITC Consumer Goods Ltd",
+      "expiryDate": "2026-12-15",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-snack-3",
+      "barcode": "8901719101037",
+      "name": "Britannia Good Day Cashew Biscuits 200g",
+      "image": "https://images.unsplash.com/photo-1558961309-dbdf71798aff?w=600&auto=format&fit=crop&q=60",
+      "description": "Rich, butter-baked cookies loaded with chopped cashew nuts.",
+      "category": "Munchies & Chips",
+      "purchasePrice": 28,
+      "sellingPrice": 35,
+      "stockQuantity": 65,
+      "reorderLevel": 10,
+      "supplierName": "ITC Consumer Goods Ltd",
+      "expiryDate": "2026-09-30",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-drink-1",
+      "barcode": "5449000000996",
+      "name": "Coca Cola Original Taste 1.25L",
+      "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&auto=format&fit=crop&q=60",
+      "description": "Refreshing, fizzy, and classic Coca Cola soft drink in a 1.25-litre bottle.",
+      "category": "Cold Drinks & Juices",
+      "purchasePrice": 50,
+      "sellingPrice": 65,
+      "stockQuantity": 40,
+      "reorderLevel": 12,
+      "supplierName": "ITC Consumer Goods Ltd",
+      "expiryDate": "2026-10-31",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-drink-2",
+      "barcode": "8902083002017",
+      "name": "Real Fruit Power Mixed Fruit Juice 1L",
+      "image": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=600&auto=format&fit=crop&q=60",
+      "description": "Healthy and delicious mixed fruit juice made from nine premium fruits.",
+      "category": "Cold Drinks & Juices",
+      "purchasePrice": 95,
+      "sellingPrice": 120,
+      "stockQuantity": 30,
+      "reorderLevel": 8,
+      "supplierName": "ITC Consumer Goods Ltd",
+      "expiryDate": "2026-08-30",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-drink-3",
+      "barcode": "8901764022127",
+      "name": "Bisleri Mineral Water 1L",
+      "image": "https://images.unsplash.com/photo-1608885898957-a599fb16ec35?w=600&auto=format&fit=crop&q=60",
+      "description": "Ozoned and mineral-infused pure drinking water.",
+      "category": "Cold Drinks & Juices",
+      "purchasePrice": 14,
+      "sellingPrice": 20,
+      "stockQuantity": 150,
+      "reorderLevel": 40,
+      "supplierName": "Thanjavur Fresh Farm Traders",
+      "expiryDate": "2027-06-19",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-grain-1",
+      "barcode": "8901499008234",
+      "name": "Aashirvaad Shudh Chakki Atta 5kg",
+      "image": "https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?w=600&auto=format&fit=crop&q=60",
+      "description": "100% pure whole wheat stone-ground flour. Sourced from high quality crops.",
+      "category": "Rice, Atta & Dals",
+      "purchasePrice": 210,
+      "sellingPrice": 260,
+      "stockQuantity": 35,
+      "reorderLevel": 8,
+      "supplierName": "ITC Consumer Goods Ltd",
+      "expiryDate": "2026-09-20",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-grain-2",
+      "barcode": "8906001290312",
+      "name": "India Gate Basmati Rice Super 5kg",
+      "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=60",
+      "description": "Aged basmati rice with slender, long grains, perfect for biryanis and pulaos.",
+      "category": "Rice, Atta & Dals",
+      "purchasePrice": 480,
+      "sellingPrice": 599,
+      "stockQuantity": 15,
+      "reorderLevel": 5,
+      "supplierName": "ITC Consumer Goods Ltd",
+      "expiryDate": "2027-05-30",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-grain-3",
+      "barcode": "8901499008555",
+      "name": "Tata Sampann Premium Toor Dal 1kg",
+      "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=60",
+      "description": "Unpolished premium split pigeon peas. Cleaned, sorted, and packed hygienically.",
+      "category": "Rice, Atta & Dals",
+      "purchasePrice": 140,
+      "sellingPrice": 185,
+      "stockQuantity": 40,
+      "reorderLevel": 10,
+      "supplierName": "ITC Consumer Goods Ltd",
+      "expiryDate": "2026-12-31",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-spice-1",
+      "barcode": "8901058002315",
+      "name": "Tata Salt Iodized 1kg",
+      "image": "https://images.unsplash.com/photo-1594911774802-8822a707cbb3?w=600&auto=format&fit=crop&q=60",
+      "description": "Pioneer of iodized salt in India, ensuring mental development and health.",
+      "category": "Masalas & Spices",
+      "purchasePrice": 20,
+      "sellingPrice": 28,
+      "stockQuantity": 100,
+      "reorderLevel": 25,
+      "supplierName": "ITC Consumer Goods Ltd",
+      "expiryDate": "2028-12-31",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-spice-2",
+      "barcode": "8901297011039",
+      "name": "MDH Deggi Mirch Powder 100g",
+      "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=60",
+      "description": "A unique blend of mild red chillies providing rich red color and spice to curries.",
+      "category": "Masalas & Spices",
+      "purchasePrice": 62,
+      "sellingPrice": 85,
+      "stockQuantity": 35,
+      "reorderLevel": 10,
+      "supplierName": "Thanjavur Fresh Farm Traders",
+      "expiryDate": "2026-11-30",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-spice-3",
+      "barcode": "8901297011220",
+      "name": "MDH Garam Masala 100g",
+      "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=60",
+      "description": "Traditional blend of spices to add aroma, depth, and flavor to vegetable and meat dishes.",
+      "category": "Masalas & Spices",
+      "purchasePrice": 68,
+      "sellingPrice": 90,
+      "stockQuantity": 42,
+      "reorderLevel": 10,
+      "supplierName": "Thanjavur Fresh Farm Traders",
+      "expiryDate": "2026-11-20",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-care-1",
+      "barcode": "8901138836069",
+      "name": "Colgate Strong Teeth Toothpaste 150g",
+      "image": "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&auto=format&fit=crop&q=60",
+      "description": "Arginine-powered formula that seals calcium in teeth, making them stronger.",
+      "category": "Personal Care",
+      "purchasePrice": 80,
+      "sellingPrice": 110,
+      "stockQuantity": 55,
+      "reorderLevel": 12,
+      "supplierName": "Hindustan Unilever Distributor",
+      "expiryDate": "2028-05-19",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-care-2",
+      "barcode": "8901030753006",
+      "name": "Dettol Liquid Handwash Original 200ml",
+      "image": "https://images.unsplash.com/photo-1603052875302-d376b7c0638a?w=600&auto=format&fit=crop&q=60",
+      "description": "Original pine fragrance handwash with 99.9% germ protection formula.",
+      "category": "Personal Care",
+      "purchasePrice": 78,
+      "sellingPrice": 99,
+      "stockQuantity": 28,
+      "reorderLevel": 8,
+      "supplierName": "Hindustan Unilever Distributor",
+      "expiryDate": "2027-10-31",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-care-3",
+      "barcode": "8901030656642",
+      "name": "Lifebuoy Total 10 Soap Bar 125g",
+      "image": "https://images.unsplash.com/photo-1603052875302-d376b7c0638a?w=600&auto=format&fit=crop&q=60",
+      "description": "Advanced silver-shield formula soap bar, providing defense against infection.",
+      "category": "Personal Care",
+      "purchasePrice": 28,
+      "sellingPrice": 38,
+      "stockQuantity": 70,
+      "reorderLevel": 15,
+      "supplierName": "Hindustan Unilever Distributor",
+      "expiryDate": "2028-02-28",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-house-1",
+      "barcode": "8901030870932",
+      "name": "Vim Dishwash Liquid Gel Lemon 500ml",
+      "image": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=600&auto=format&fit=crop&q=60",
+      "description": "Super-degreasing dishwash gel with the power of 100 lemons. High efficiency.",
+      "category": "Household Essentials",
+      "purchasePrice": 92,
+      "sellingPrice": 120,
+      "stockQuantity": 45,
+      "reorderLevel": 10,
+      "supplierName": "Hindustan Unilever Distributor",
+      "expiryDate": "2027-09-30",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-house-2",
+      "barcode": "8901030784260",
+      "name": "Surf Excel Easy Wash Detergent 1kg",
+      "image": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=600&auto=format&fit=crop&q=60",
+      "description": "Superfine powder that dissolves easily and removes tough stains in buckets.",
+      "category": "Household Essentials",
+      "purchasePrice": 110,
+      "sellingPrice": 145,
+      "stockQuantity": 32,
+      "reorderLevel": 8,
+      "supplierName": "Hindustan Unilever Distributor",
+      "expiryDate": "2028-03-31",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "prod-house-3",
+      "barcode": "8901243121010",
+      "name": "Lizol Disinfectant Floor Cleaner Citrus 1L",
+      "image": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=600&auto=format&fit=crop&q=60",
+      "description": "Citrus-scented floor cleaner, kills 99.9% of bacteria and leaves floor shiny clean.",
+      "category": "Household Essentials",
+      "purchasePrice": 165,
+      "sellingPrice": 209,
+      "stockQuantity": 20,
+      "reorderLevel": 5,
+      "supplierName": "Hindustan Unilever Distributor",
+      "expiryDate": "2028-01-31",
+      "createdAt": "2026-06-19T15:16:52.970Z",
+      "updatedAt": "2026-06-19T15:16:52.970Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "SMS-20260520-1030",
+      "customerName": "Anjali Sharma",
+      "customerMobile": "9150060800",
+      "customerAddress": "A-15, Manakarambai, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 378,
+      "tax": 18,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100004381384",
+      "createdAt": "2026-05-20T11:25:00.971Z",
+      "updatedAt": "2026-05-20T11:25:00.971Z",
+      "items": [
+        {
+          "id": "item-30-0",
+          "productId": "prod-house-1",
+          "productName": "Vim Dishwash Liquid Gel Lemon 500ml",
+          "quantity": 3,
+          "purchasePrice": 92,
+          "sellingPrice": 120
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260521-1029",
+      "customerName": "Ramesh Kumar",
+      "customerMobile": "9876543210",
+      "customerAddress": "22, South Street, Vennar Bank, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 410.55,
+      "tax": 19.55,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100004377260",
+      "createdAt": "2026-05-21T07:20:00.971Z",
+      "updatedAt": "2026-05-21T07:20:00.971Z",
+      "items": [
+        {
+          "id": "item-29-0",
+          "productId": "prod-f&v-4",
+          "productName": "Organic Potatoes (Jyoti)",
+          "quantity": 2,
+          "purchasePrice": 18,
+          "sellingPrice": 28
+        },
+        {
+          "id": "item-29-1",
+          "productId": "prod-drink-2",
+          "productName": "Real Fruit Power Mixed Fruit Juice 1L",
+          "quantity": 1,
+          "purchasePrice": 95,
+          "sellingPrice": 120
+        },
+        {
+          "id": "item-29-2",
+          "productId": "prod-f&v-3",
+          "productName": "Fresh Cavendish Bananas (Robusta)",
+          "quantity": 3,
+          "purchasePrice": 35,
+          "sellingPrice": 50
+        },
+        {
+          "id": "item-29-3",
+          "productId": "prod-drink-1",
+          "productName": "Coca Cola Original Taste 1.25L",
+          "quantity": 1,
+          "purchasePrice": 50,
+          "sellingPrice": 65
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260522-1028",
+      "customerName": "Anjali Sharma",
+      "customerMobile": "9150060800",
+      "customerAddress": "A-15, Manakarambai, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 634.2,
+      "tax": 30.2,
+      "discount": 31,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100007833509",
+      "createdAt": "2026-05-22T07:52:00.971Z",
+      "updatedAt": "2026-05-22T07:52:00.971Z",
+      "items": [
+        {
+          "id": "item-28-0",
+          "productId": "prod-spice-2",
+          "productName": "MDH Deggi Mirch Powder 100g",
+          "quantity": 1,
+          "purchasePrice": 62,
+          "sellingPrice": 85
+        },
+        {
+          "id": "item-28-1",
+          "productId": "prod-snack-1",
+          "productName": "Lays Potato Chips - Magic Masala 50g",
+          "quantity": 1,
+          "purchasePrice": 16,
+          "sellingPrice": 20
+        },
+        {
+          "id": "item-28-2",
+          "productId": "prod-drink-2",
+          "productName": "Real Fruit Power Mixed Fruit Juice 1L",
+          "quantity": 2,
+          "purchasePrice": 95,
+          "sellingPrice": 120
+        },
+        {
+          "id": "item-28-3",
+          "productId": "prod-house-2",
+          "productName": "Surf Excel Easy Wash Detergent 1kg",
+          "quantity": 2,
+          "purchasePrice": 110,
+          "sellingPrice": 145
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260523-1027",
+      "customerName": "Anjali Sharma",
+      "customerMobile": "9150060800",
+      "customerAddress": "A-15, Manakarambai, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 329.7,
+      "tax": 15.7,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100006559344",
+      "createdAt": "2026-05-23T07:44:00.971Z",
+      "updatedAt": "2026-05-23T07:44:00.971Z",
+      "items": [
+        {
+          "id": "item-27-0",
+          "productId": "prod-spice-3",
+          "productName": "MDH Garam Masala 100g",
+          "quantity": 1,
+          "purchasePrice": 68,
+          "sellingPrice": 90
+        },
+        {
+          "id": "item-27-1",
+          "productId": "prod-snack-1",
+          "productName": "Lays Potato Chips - Magic Masala 50g",
+          "quantity": 1,
+          "purchasePrice": 16,
+          "sellingPrice": 20
+        },
+        {
+          "id": "item-27-2",
+          "productId": "prod-dairy-4",
+          "productName": "Fresh Farm Eggs (Pack of 6)",
+          "quantity": 3,
+          "purchasePrice": 32,
+          "sellingPrice": 48
+        },
+        {
+          "id": "item-27-3",
+          "productId": "prod-snack-2",
+          "productName": "Kurkure Masala Munch 90g",
+          "quantity": 2,
+          "purchasePrice": 24,
+          "sellingPrice": 30
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260524-1026",
+      "customerName": "Suresh Raina",
+      "customerMobile": "9003322110",
+      "customerAddress": "Sector 3, Tendral Nagar, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 1291.5,
+      "tax": 61.5,
+      "discount": 64,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100005431099",
+      "createdAt": "2026-05-24T11:29:00.971Z",
+      "updatedAt": "2026-05-24T11:29:00.971Z",
+      "items": [
+        {
+          "id": "item-26-0",
+          "productId": "prod-grain-2",
+          "productName": "India Gate Basmati Rice Super 5kg",
+          "quantity": 2,
+          "purchasePrice": 480,
+          "sellingPrice": 599
+        },
+        {
+          "id": "item-26-1",
+          "productId": "prod-dairy-4",
+          "productName": "Fresh Farm Eggs (Pack of 6)",
+          "quantity": 2,
+          "purchasePrice": 32,
+          "sellingPrice": 48
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260525-1025",
+      "customerName": "Ramesh Kumar",
+      "customerMobile": "9876543210",
+      "customerAddress": "22, South Street, Vennar Bank, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 473.55,
+      "tax": 22.55,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100002941520",
+      "createdAt": "2026-05-25T09:31:00.972Z",
+      "updatedAt": "2026-05-25T09:31:00.972Z",
+      "items": [
+        {
+          "id": "item-25-0",
+          "productId": "prod-care-3",
+          "productName": "Lifebuoy Total 10 Soap Bar 125g",
+          "quantity": 2,
+          "purchasePrice": 28,
+          "sellingPrice": 38
+        },
+        {
+          "id": "item-25-1",
+          "productId": "prod-dairy-3",
+          "productName": "Amul Masti Spiced Buttermilk 200ml",
+          "quantity": 1,
+          "purchasePrice": 12,
+          "sellingPrice": 15
+        },
+        {
+          "id": "item-25-2",
+          "productId": "prod-house-1",
+          "productName": "Vim Dishwash Liquid Gel Lemon 500ml",
+          "quantity": 3,
+          "purchasePrice": 92,
+          "sellingPrice": 120
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260526-1024",
+      "customerName": "Ramesh Kumar",
+      "customerMobile": "9876543210",
+      "customerAddress": "22, South Street, Vennar Bank, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 204.75,
+      "tax": 9.75,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100009061067",
+      "createdAt": "2026-05-26T05:03:00.972Z",
+      "updatedAt": "2026-05-26T05:03:00.972Z",
+      "items": [
+        {
+          "id": "item-24-0",
+          "productId": "prod-care-2",
+          "productName": "Dettol Liquid Handwash Original 200ml",
+          "quantity": 1,
+          "purchasePrice": 78,
+          "sellingPrice": 99
+        },
+        {
+          "id": "item-24-1",
+          "productId": "prod-dairy-4",
+          "productName": "Fresh Farm Eggs (Pack of 6)",
+          "quantity": 2,
+          "purchasePrice": 32,
+          "sellingPrice": 48
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260527-1023",
+      "customerName": "Anjali Sharma",
+      "customerMobile": "9150060800",
+      "customerAddress": "A-15, Manakarambai, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 1254.75,
+      "tax": 59.75,
+      "discount": 62,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100007054676",
+      "createdAt": "2026-05-27T09:17:00.972Z",
+      "updatedAt": "2026-05-27T09:17:00.972Z",
+      "items": [
+        {
+          "id": "item-23-0",
+          "productId": "prod-dairy-1",
+          "productName": "Amul Butter 500g",
+          "quantity": 2,
+          "purchasePrice": 220,
+          "sellingPrice": 275
+        },
+        {
+          "id": "item-23-1",
+          "productId": "prod-f&v-3",
+          "productName": "Fresh Cavendish Bananas (Robusta)",
+          "quantity": 1,
+          "purchasePrice": 35,
+          "sellingPrice": 50
+        },
+        {
+          "id": "item-23-2",
+          "productId": "prod-house-3",
+          "productName": "Lizol Disinfectant Floor Cleaner Citrus 1L",
+          "quantity": 3,
+          "purchasePrice": 165,
+          "sellingPrice": 209
+        },
+        {
+          "id": "item-23-3",
+          "productId": "prod-snack-2",
+          "productName": "Kurkure Masala Munch 90g",
+          "quantity": 1,
+          "purchasePrice": 24,
+          "sellingPrice": 30
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260528-1022",
+      "customerName": "Ramesh Kumar",
+      "customerMobile": "9876543210",
+      "customerAddress": "22, South Street, Vennar Bank, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 126,
+      "tax": 6,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100006424115",
+      "createdAt": "2026-05-28T10:57:00.972Z",
+      "updatedAt": "2026-05-28T10:57:00.972Z",
+      "items": [
+        {
+          "id": "item-22-0",
+          "productId": "prod-drink-2",
+          "productName": "Real Fruit Power Mixed Fruit Juice 1L",
+          "quantity": 1,
+          "purchasePrice": 95,
+          "sellingPrice": 120
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260529-1021",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 439.95,
+      "tax": 20.95,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100004576812",
+      "createdAt": "2026-05-29T04:48:00.972Z",
+      "updatedAt": "2026-05-29T04:48:00.972Z",
+      "items": [
+        {
+          "id": "item-21-0",
+          "productId": "prod-snack-3",
+          "productName": "Britannia Good Day Cashew Biscuits 200g",
+          "quantity": 2,
+          "purchasePrice": 28,
+          "sellingPrice": 35
+        },
+        {
+          "id": "item-21-1",
+          "productId": "prod-drink-1",
+          "productName": "Coca Cola Original Taste 1.25L",
+          "quantity": 3,
+          "purchasePrice": 50,
+          "sellingPrice": 65
+        },
+        {
+          "id": "item-21-2",
+          "productId": "prod-spice-1",
+          "productName": "Tata Salt Iodized 1kg",
+          "quantity": 3,
+          "purchasePrice": 20,
+          "sellingPrice": 28
+        },
+        {
+          "id": "item-21-3",
+          "productId": "prod-f&v-2",
+          "productName": "Organic Tomatoes (Local)",
+          "quantity": 2,
+          "purchasePrice": 20,
+          "sellingPrice": 35
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260530-1020",
+      "customerName": "Anjali Sharma",
+      "customerMobile": "9150060800",
+      "customerAddress": "A-15, Manakarambai, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 231,
+      "tax": 11,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100003114210",
+      "createdAt": "2026-05-30T08:00:00.972Z",
+      "updatedAt": "2026-05-30T08:00:00.972Z",
+      "items": [
+        {
+          "id": "item-20-0",
+          "productId": "prod-care-1",
+          "productName": "Colgate Strong Teeth Toothpaste 150g",
+          "quantity": 2,
+          "purchasePrice": 80,
+          "sellingPrice": 110
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260531-1019",
+      "customerName": "Anjali Sharma",
+      "customerMobile": "9150060800",
+      "customerAddress": "A-15, Manakarambai, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 52.5,
+      "tax": 2.5,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100008920345",
+      "createdAt": "2026-05-31T06:22:00.972Z",
+      "updatedAt": "2026-05-31T06:22:00.972Z",
+      "items": [
+        {
+          "id": "item-19-0",
+          "productId": "prod-f&v-3",
+          "productName": "Fresh Cavendish Bananas (Robusta)",
+          "quantity": 1,
+          "purchasePrice": 35,
+          "sellingPrice": 50
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260601-1018",
+      "customerName": "Suresh Raina",
+      "customerMobile": "9003322110",
+      "customerAddress": "Sector 3, Tendral Nagar, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 195.3,
+      "tax": 9.3,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100008862152",
+      "createdAt": "2026-06-01T10:16:00.972Z",
+      "updatedAt": "2026-06-01T10:16:00.972Z",
+      "items": [
+        {
+          "id": "item-18-0",
+          "productId": "prod-drink-1",
+          "productName": "Coca Cola Original Taste 1.25L",
+          "quantity": 2,
+          "purchasePrice": 50,
+          "sellingPrice": 65
+        },
+        {
+          "id": "item-18-1",
+          "productId": "prod-f&v-4",
+          "productName": "Organic Potatoes (Jyoti)",
+          "quantity": 2,
+          "purchasePrice": 18,
+          "sellingPrice": 28
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260602-1017",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 586.95,
+      "tax": 27.95,
+      "discount": 29,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100006162105",
+      "createdAt": "2026-06-02T05:25:00.973Z",
+      "updatedAt": "2026-06-02T05:25:00.973Z",
+      "items": [
+        {
+          "id": "item-17-0",
+          "productId": "prod-dairy-4",
+          "productName": "Fresh Farm Eggs (Pack of 6)",
+          "quantity": 1,
+          "purchasePrice": 32,
+          "sellingPrice": 48
+        },
+        {
+          "id": "item-17-1",
+          "productId": "prod-f&v-1",
+          "productName": "Fresh Kashmiri Apples (Premium)",
+          "quantity": 3,
+          "purchasePrice": 130,
+          "sellingPrice": 180
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260603-1016",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 601.65,
+      "tax": 28.65,
+      "discount": 30,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100003648926",
+      "createdAt": "2026-06-03T06:54:00.973Z",
+      "updatedAt": "2026-06-03T06:54:00.973Z",
+      "items": [
+        {
+          "id": "item-16-0",
+          "productId": "prod-spice-2",
+          "productName": "MDH Deggi Mirch Powder 100g",
+          "quantity": 1,
+          "purchasePrice": 62,
+          "sellingPrice": 85
+        },
+        {
+          "id": "item-16-1",
+          "productId": "prod-care-1",
+          "productName": "Colgate Strong Teeth Toothpaste 150g",
+          "quantity": 2,
+          "purchasePrice": 80,
+          "sellingPrice": 110
+        },
+        {
+          "id": "item-16-2",
+          "productId": "prod-care-3",
+          "productName": "Lifebuoy Total 10 Soap Bar 125g",
+          "quantity": 1,
+          "purchasePrice": 28,
+          "sellingPrice": 38
+        },
+        {
+          "id": "item-16-3",
+          "productId": "prod-grain-1",
+          "productName": "Aashirvaad Shudh Chakki Atta 5kg",
+          "quantity": 1,
+          "purchasePrice": 210,
+          "sellingPrice": 260
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260604-1015",
+      "customerName": "Suresh Raina",
+      "customerMobile": "9003322110",
+      "customerAddress": "Sector 3, Tendral Nagar, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 525,
+      "tax": 25,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100001248441",
+      "createdAt": "2026-06-04T05:34:00.973Z",
+      "updatedAt": "2026-06-04T05:34:00.973Z",
+      "items": [
+        {
+          "id": "item-15-0",
+          "productId": "prod-spice-1",
+          "productName": "Tata Salt Iodized 1kg",
+          "quantity": 2,
+          "purchasePrice": 20,
+          "sellingPrice": 28
+        },
+        {
+          "id": "item-15-1",
+          "productId": "prod-care-3",
+          "productName": "Lifebuoy Total 10 Soap Bar 125g",
+          "quantity": 3,
+          "purchasePrice": 28,
+          "sellingPrice": 38
+        },
+        {
+          "id": "item-15-2",
+          "productId": "prod-care-1",
+          "productName": "Colgate Strong Teeth Toothpaste 150g",
+          "quantity": 3,
+          "purchasePrice": 80,
+          "sellingPrice": 110
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260605-1014",
+      "customerName": "Suresh Raina",
+      "customerMobile": "9003322110",
+      "customerAddress": "Sector 3, Tendral Nagar, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 338.1,
+      "tax": 16.1,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100002721428",
+      "createdAt": "2026-06-05T10:44:00.973Z",
+      "updatedAt": "2026-06-05T10:44:00.973Z",
+      "items": [
+        {
+          "id": "item-14-0",
+          "productId": "prod-snack-2",
+          "productName": "Kurkure Masala Munch 90g",
+          "quantity": 1,
+          "purchasePrice": 24,
+          "sellingPrice": 30
+        },
+        {
+          "id": "item-14-1",
+          "productId": "prod-dairy-2",
+          "productName": "Amul Taaza Toned Milk 1L",
+          "quantity": 1,
+          "purchasePrice": 60,
+          "sellingPrice": 72
+        },
+        {
+          "id": "item-14-2",
+          "productId": "prod-care-1",
+          "productName": "Colgate Strong Teeth Toothpaste 150g",
+          "quantity": 2,
+          "purchasePrice": 80,
+          "sellingPrice": 110
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260606-1013",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 517.65,
+      "tax": 24.65,
+      "discount": 25,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100005594936",
+      "createdAt": "2026-06-06T03:32:00.973Z",
+      "updatedAt": "2026-06-06T03:32:00.973Z",
+      "items": [
+        {
+          "id": "item-13-0",
+          "productId": "prod-drink-2",
+          "productName": "Real Fruit Power Mixed Fruit Juice 1L",
+          "quantity": 2,
+          "purchasePrice": 95,
+          "sellingPrice": 120
+        },
+        {
+          "id": "item-13-1",
+          "productId": "prod-f&v-1",
+          "productName": "Fresh Kashmiri Apples (Premium)",
+          "quantity": 1,
+          "purchasePrice": 130,
+          "sellingPrice": 180
+        },
+        {
+          "id": "item-13-2",
+          "productId": "prod-care-3",
+          "productName": "Lifebuoy Total 10 Soap Bar 125g",
+          "quantity": 1,
+          "purchasePrice": 28,
+          "sellingPrice": 38
+        },
+        {
+          "id": "item-13-3",
+          "productId": "prod-drink-3",
+          "productName": "Bisleri Mineral Water 1L",
+          "quantity": 3,
+          "purchasePrice": 14,
+          "sellingPrice": 20
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260607-1012",
+      "customerName": "Anjali Sharma",
+      "customerMobile": "9150060800",
+      "customerAddress": "A-15, Manakarambai, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 63,
+      "tax": 3,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100007325942",
+      "createdAt": "2026-06-07T06:02:00.973Z",
+      "updatedAt": "2026-06-07T06:02:00.973Z",
+      "items": [
+        {
+          "id": "item-12-0",
+          "productId": "prod-snack-2",
+          "productName": "Kurkure Masala Munch 90g",
+          "quantity": 2,
+          "purchasePrice": 24,
+          "sellingPrice": 30
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260608-1011",
+      "customerName": "Suresh Raina",
+      "customerMobile": "9003322110",
+      "customerAddress": "Sector 3, Tendral Nagar, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 367.5,
+      "tax": 17.5,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100007832891",
+      "createdAt": "2026-06-08T04:46:00.973Z",
+      "updatedAt": "2026-06-08T04:46:00.973Z",
+      "items": [
+        {
+          "id": "item-11-0",
+          "productId": "prod-care-1",
+          "productName": "Colgate Strong Teeth Toothpaste 150g",
+          "quantity": 3,
+          "purchasePrice": 80,
+          "sellingPrice": 110
+        },
+        {
+          "id": "item-11-1",
+          "productId": "prod-drink-3",
+          "productName": "Bisleri Mineral Water 1L",
+          "quantity": 1,
+          "purchasePrice": 14,
+          "sellingPrice": 20
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260609-1010",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 466.2,
+      "tax": 22.2,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100006222221",
+      "createdAt": "2026-06-09T08:23:00.973Z",
+      "updatedAt": "2026-06-09T08:23:00.973Z",
+      "items": [
+        {
+          "id": "item-10-0",
+          "productId": "prod-drink-1",
+          "productName": "Coca Cola Original Taste 1.25L",
+          "quantity": 2,
+          "purchasePrice": 50,
+          "sellingPrice": 65
+        },
+        {
+          "id": "item-10-1",
+          "productId": "prod-f&v-4",
+          "productName": "Organic Potatoes (Jyoti)",
+          "quantity": 2,
+          "purchasePrice": 18,
+          "sellingPrice": 28
+        },
+        {
+          "id": "item-10-2",
+          "productId": "prod-care-3",
+          "productName": "Lifebuoy Total 10 Soap Bar 125g",
+          "quantity": 3,
+          "purchasePrice": 28,
+          "sellingPrice": 38
+        },
+        {
+          "id": "item-10-3",
+          "productId": "prod-dairy-2",
+          "productName": "Amul Taaza Toned Milk 1L",
+          "quantity": 2,
+          "purchasePrice": 60,
+          "sellingPrice": 72
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260610-1009",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 683.55,
+      "tax": 32.55,
+      "discount": 34,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100006134693",
+      "createdAt": "2026-06-10T11:29:00.973Z",
+      "updatedAt": "2026-06-10T11:29:00.973Z",
+      "items": [
+        {
+          "id": "item-9-0",
+          "productId": "prod-f&v-1",
+          "productName": "Fresh Kashmiri Apples (Premium)",
+          "quantity": 2,
+          "purchasePrice": 130,
+          "sellingPrice": 180
+        },
+        {
+          "id": "item-9-1",
+          "productId": "prod-care-3",
+          "productName": "Lifebuoy Total 10 Soap Bar 125g",
+          "quantity": 2,
+          "purchasePrice": 28,
+          "sellingPrice": 38
+        },
+        {
+          "id": "item-9-2",
+          "productId": "prod-drink-3",
+          "productName": "Bisleri Mineral Water 1L",
+          "quantity": 2,
+          "purchasePrice": 14,
+          "sellingPrice": 20
+        },
+        {
+          "id": "item-9-3",
+          "productId": "prod-house-3",
+          "productName": "Lizol Disinfectant Floor Cleaner Citrus 1L",
+          "quantity": 1,
+          "purchasePrice": 165,
+          "sellingPrice": 209
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260611-1008",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 1080.45,
+      "tax": 51.45,
+      "discount": 54,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100002816032",
+      "createdAt": "2026-06-11T04:04:00.973Z",
+      "updatedAt": "2026-06-11T04:04:00.973Z",
+      "items": [
+        {
+          "id": "item-8-0",
+          "productId": "prod-spice-2",
+          "productName": "MDH Deggi Mirch Powder 100g",
+          "quantity": 3,
+          "purchasePrice": 62,
+          "sellingPrice": 85
+        },
+        {
+          "id": "item-8-1",
+          "productId": "prod-grain-1",
+          "productName": "Aashirvaad Shudh Chakki Atta 5kg",
+          "quantity": 3,
+          "purchasePrice": 210,
+          "sellingPrice": 260
+        },
+        {
+          "id": "item-8-2",
+          "productId": "prod-f&v-4",
+          "productName": "Organic Potatoes (Jyoti)",
+          "quantity": 1,
+          "purchasePrice": 18,
+          "sellingPrice": 28
+        },
+        {
+          "id": "item-8-3",
+          "productId": "prod-drink-3",
+          "productName": "Bisleri Mineral Water 1L",
+          "quantity": 1,
+          "purchasePrice": 14,
+          "sellingPrice": 20
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260612-1007",
+      "customerName": "Suresh Raina",
+      "customerMobile": "9003322110",
+      "customerAddress": "Sector 3, Tendral Nagar, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 808.5,
+      "tax": 38.5,
+      "discount": 40,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100001098600",
+      "createdAt": "2026-06-12T05:34:00.973Z",
+      "updatedAt": "2026-06-12T05:34:00.973Z",
+      "items": [
+        {
+          "id": "item-7-0",
+          "productId": "prod-spice-3",
+          "productName": "MDH Garam Masala 100g",
+          "quantity": 3,
+          "purchasePrice": 68,
+          "sellingPrice": 90
+        },
+        {
+          "id": "item-7-1",
+          "productId": "prod-f&v-1",
+          "productName": "Fresh Kashmiri Apples (Premium)",
+          "quantity": 3,
+          "purchasePrice": 130,
+          "sellingPrice": 180
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260613-1006",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 1449,
+      "tax": 69,
+      "discount": 72,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100005912184",
+      "createdAt": "2026-06-13T05:26:00.973Z",
+      "updatedAt": "2026-06-13T05:26:00.973Z",
+      "items": [
+        {
+          "id": "item-6-0",
+          "productId": "prod-grain-2",
+          "productName": "India Gate Basmati Rice Super 5kg",
+          "quantity": 2,
+          "purchasePrice": 480,
+          "sellingPrice": 599
+        },
+        {
+          "id": "item-6-1",
+          "productId": "prod-f&v-3",
+          "productName": "Fresh Cavendish Bananas (Robusta)",
+          "quantity": 3,
+          "purchasePrice": 35,
+          "sellingPrice": 50
+        },
+        {
+          "id": "item-6-2",
+          "productId": "prod-f&v-4",
+          "productName": "Organic Potatoes (Jyoti)",
+          "quantity": 2,
+          "purchasePrice": 18,
+          "sellingPrice": 28
+        },
+        {
+          "id": "item-6-3",
+          "productId": "prod-dairy-4",
+          "productName": "Fresh Farm Eggs (Pack of 6)",
+          "quantity": 1,
+          "purchasePrice": 32,
+          "sellingPrice": 48
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260614-1005",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 126,
+      "tax": 6,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100005913031",
+      "createdAt": "2026-06-14T10:23:00.973Z",
+      "updatedAt": "2026-06-14T10:23:00.973Z",
+      "items": [
+        {
+          "id": "item-5-0",
+          "productId": "prod-drink-2",
+          "productName": "Real Fruit Power Mixed Fruit Juice 1L",
+          "quantity": 1,
+          "purchasePrice": 95,
+          "sellingPrice": 120
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260615-1004",
+      "customerName": "Anjali Sharma",
+      "customerMobile": "9150060800",
+      "customerAddress": "A-15, Manakarambai, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 110.25,
+      "tax": 5.25,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100001679127",
+      "createdAt": "2026-06-15T09:15:00.974Z",
+      "updatedAt": "2026-06-15T09:15:00.974Z",
+      "items": [
+        {
+          "id": "item-4-0",
+          "productId": "prod-snack-3",
+          "productName": "Britannia Good Day Cashew Biscuits 200g",
+          "quantity": 3,
+          "purchasePrice": 28,
+          "sellingPrice": 35
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260616-1003",
+      "customerName": "Anjali Sharma",
+      "customerMobile": "9150060800",
+      "customerAddress": "A-15, Manakarambai, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 224.7,
+      "tax": 10.7,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100008502078",
+      "createdAt": "2026-06-16T06:09:00.974Z",
+      "updatedAt": "2026-06-16T06:09:00.974Z",
+      "items": [
+        {
+          "id": "item-3-0",
+          "productId": "prod-f&v-4",
+          "productName": "Organic Potatoes (Jyoti)",
+          "quantity": 3,
+          "purchasePrice": 18,
+          "sellingPrice": 28
+        },
+        {
+          "id": "item-3-1",
+          "productId": "prod-drink-1",
+          "productName": "Coca Cola Original Taste 1.25L",
+          "quantity": 2,
+          "purchasePrice": 50,
+          "sellingPrice": 65
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260617-1002",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 110.25,
+      "tax": 5.25,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100007778238",
+      "createdAt": "2026-06-17T04:05:00.974Z",
+      "updatedAt": "2026-06-17T04:05:00.974Z",
+      "items": [
+        {
+          "id": "item-2-0",
+          "productId": "prod-f&v-2",
+          "productName": "Organic Tomatoes (Local)",
+          "quantity": 3,
+          "purchasePrice": 20,
+          "sellingPrice": 35
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260618-1001",
+      "customerName": "Suresh Raina",
+      "customerMobile": "9003322110",
+      "customerAddress": "Sector 3, Tendral Nagar, Thanjavur",
+      "pickupTime": "05:00 PM - 07:00 PM",
+      "totalAmount": 36.75,
+      "tax": 1.75,
+      "discount": 0,
+      "status": "COMPLETED",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-100002085555",
+      "createdAt": "2026-06-18T08:58:00.974Z",
+      "updatedAt": "2026-06-18T08:58:00.974Z",
+      "items": [
+        {
+          "id": "item-1-0",
+          "productId": "prod-f&v-2",
+          "productName": "Organic Tomatoes (Local)",
+          "quantity": 1,
+          "purchasePrice": 20,
+          "sellingPrice": 35
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260619-2000",
+      "customerName": "Mohammad Ali Jinnah",
+      "customerMobile": "9788045564",
+      "customerAddress": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "pickupTime": "06:00 PM - 08:00 PM",
+      "totalAmount": 262.5,
+      "tax": 12.5,
+      "discount": 0,
+      "status": "PENDING",
+      "paymentStatus": "PENDING",
+      "createdAt": "2026-06-19T13:40:00.974Z",
+      "updatedAt": "2026-06-19T13:40:00.974Z",
+      "items": [
+        {
+          "id": "item-active-0-0",
+          "productId": "prod-f&v-1",
+          "productName": "Fresh Kashmiri Apples (Premium)",
+          "quantity": 1,
+          "purchasePrice": 130,
+          "sellingPrice": 180
+        },
+        {
+          "id": "item-active-0-1",
+          "productId": "prod-f&v-2",
+          "productName": "Organic Tomatoes (Local)",
+          "quantity": 2,
+          "purchasePrice": 20,
+          "sellingPrice": 35
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260619-2001",
+      "customerName": "Ramesh Kumar",
+      "customerMobile": "9876543210",
+      "customerAddress": "22, South Street, Vennar Bank, Thanjavur",
+      "pickupTime": "06:00 PM - 08:00 PM",
+      "totalAmount": 262.5,
+      "tax": 12.5,
+      "discount": 0,
+      "status": "ACCEPTED",
+      "paymentStatus": "PENDING",
+      "createdAt": "2026-06-19T13:29:00.974Z",
+      "updatedAt": "2026-06-19T13:29:00.974Z",
+      "items": [
+        {
+          "id": "item-active-1-0",
+          "productId": "prod-f&v-1",
+          "productName": "Fresh Kashmiri Apples (Premium)",
+          "quantity": 1,
+          "purchasePrice": 130,
+          "sellingPrice": 180
+        },
+        {
+          "id": "item-active-1-1",
+          "productId": "prod-f&v-2",
+          "productName": "Organic Tomatoes (Local)",
+          "quantity": 2,
+          "purchasePrice": 20,
+          "sellingPrice": 35
+        }
+      ]
+    },
+    {
+      "id": "SMS-20260619-2002",
+      "customerName": "Suresh Raina",
+      "customerMobile": "9003322110",
+      "customerAddress": "Sector 3, Tendral Nagar, Thanjavur",
+      "pickupTime": "06:00 PM - 08:00 PM",
+      "totalAmount": 262.5,
+      "tax": 12.5,
+      "discount": 0,
+      "status": "READY_FOR_PICKUP",
+      "paymentStatus": "COMPLETED",
+      "upiTxnId": "UPI-500000000002",
+      "createdAt": "2026-06-19T11:51:00.974Z",
+      "updatedAt": "2026-06-19T11:51:00.974Z",
+      "items": [
+        {
+          "id": "item-active-2-0",
+          "productId": "prod-f&v-1",
+          "productName": "Fresh Kashmiri Apples (Premium)",
+          "quantity": 1,
+          "purchasePrice": 130,
+          "sellingPrice": 180
+        },
+        {
+          "id": "item-active-2-1",
+          "productId": "prod-f&v-2",
+          "productName": "Organic Tomatoes (Local)",
+          "quantity": 2,
+          "purchasePrice": 20,
+          "sellingPrice": 35
+        }
+      ]
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "sup-1",
+      "name": "Thanjavur Fresh Farm Traders",
+      "contactNumber": "+91 9845012345",
+      "address": "12, New Fruit Market Road, Thanjavur, Tamil Nadu",
+      "createdAt": "2026-01-10T12:00:00Z"
+    },
+    {
+      "id": "sup-2",
+      "name": "Amul Dairy Distributors",
+      "contactNumber": "+91 9789054321",
+      "address": "Block 4B, Industrial Area, Trichy, Tamil Nadu",
+      "createdAt": "2026-01-12T12:00:00Z"
+    },
+    {
+      "id": "sup-3",
+      "name": "ITC Consumer Goods Ltd",
+      "contactNumber": "+91 9944005511",
+      "address": "SF-10, SIDCO Estate, Thanjavur, Tamil Nadu",
+      "createdAt": "2026-01-15T12:00:00Z"
+    },
+    {
+      "id": "sup-4",
+      "name": "Hindustan Unilever Distributor",
+      "contactNumber": "+91 9622883344",
+      "address": "No 45, V.O.C Street, Manakarambai, Thanjavur, Tamil Nadu",
+      "createdAt": "2026-01-20T12:00:00Z"
+    }
+  ],
+  "customers": [
+    {
+      "mobileNumber": "9788045564",
+      "name": "Mohammad Ali Jinnah",
+      "address": "818, Tendral Nagar, Vennar Bank Post, Manakarambai, Thanjavur, Tamil Nadu",
+      "totalSpend": 7500,
+      "loyaltyPoints": 750,
+      "createdAt": "2026-02-01T08:30:00Z",
+      "updatedAt": "2026-06-18T10:20:00Z"
+    },
+    {
+      "mobileNumber": "9876543210",
+      "name": "Ramesh Kumar",
+      "address": "22, South Street, Vennar Bank, Thanjavur",
+      "totalSpend": 2450,
+      "loyaltyPoints": 245,
+      "createdAt": "2026-03-14T09:15:00Z",
+      "updatedAt": "2026-06-15T18:40:00Z"
+    },
+    {
+      "mobileNumber": "9003322110",
+      "name": "Suresh Raina",
+      "address": "Sector 3, Tendral Nagar, Thanjavur",
+      "totalSpend": 1100,
+      "loyaltyPoints": 110,
+      "createdAt": "2026-05-10T14:50:00Z",
+      "updatedAt": "2026-06-10T12:30:00Z"
+    },
+    {
+      "mobileNumber": "9150060800",
+      "name": "Anjali Sharma",
+      "address": "A-15, Manakarambai, Thanjavur",
+      "totalSpend": 450,
+      "loyaltyPoints": 45,
+      "createdAt": "2026-06-01T11:00:00Z",
+      "updatedAt": "2026-06-17T17:15:00Z"
+    }
+  ],
+  "inventoryTxns": [
+    {
+      "id": "txn-init-0",
+      "productId": "prod-f&v-1",
+      "productName": "Fresh Kashmiri Apples (Premium)",
+      "quantity": 45,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-1",
+      "productId": "prod-f&v-2",
+      "productName": "Organic Tomatoes (Local)",
+      "quantity": 8,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-2",
+      "productId": "prod-f&v-3",
+      "productName": "Fresh Cavendish Bananas (Robusta)",
+      "quantity": 60,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-3",
+      "productId": "prod-f&v-4",
+      "productName": "Organic Potatoes (Jyoti)",
+      "quantity": 120,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-4",
+      "productId": "prod-dairy-1",
+      "productName": "Amul Butter 500g",
+      "quantity": 25,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-5",
+      "productId": "prod-dairy-2",
+      "productName": "Amul Taaza Toned Milk 1L",
+      "quantity": 50,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-6",
+      "productId": "prod-dairy-3",
+      "productName": "Amul Masti Spiced Buttermilk 200ml",
+      "quantity": 80,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-7",
+      "productId": "prod-dairy-4",
+      "productName": "Fresh Farm Eggs (Pack of 6)",
+      "quantity": 30,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-8",
+      "productId": "prod-snack-1",
+      "productName": "Lays Potato Chips - Magic Masala 50g",
+      "quantity": 110,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-9",
+      "productId": "prod-snack-2",
+      "productName": "Kurkure Masala Munch 90g",
+      "quantity": 3,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-10",
+      "productId": "prod-snack-3",
+      "productName": "Britannia Good Day Cashew Biscuits 200g",
+      "quantity": 65,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-11",
+      "productId": "prod-drink-1",
+      "productName": "Coca Cola Original Taste 1.25L",
+      "quantity": 40,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-12",
+      "productId": "prod-drink-2",
+      "productName": "Real Fruit Power Mixed Fruit Juice 1L",
+      "quantity": 30,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-13",
+      "productId": "prod-drink-3",
+      "productName": "Bisleri Mineral Water 1L",
+      "quantity": 150,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-14",
+      "productId": "prod-grain-1",
+      "productName": "Aashirvaad Shudh Chakki Atta 5kg",
+      "quantity": 35,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-15",
+      "productId": "prod-grain-2",
+      "productName": "India Gate Basmati Rice Super 5kg",
+      "quantity": 15,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-16",
+      "productId": "prod-grain-3",
+      "productName": "Tata Sampann Premium Toor Dal 1kg",
+      "quantity": 40,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-17",
+      "productId": "prod-spice-1",
+      "productName": "Tata Salt Iodized 1kg",
+      "quantity": 100,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-18",
+      "productId": "prod-spice-2",
+      "productName": "MDH Deggi Mirch Powder 100g",
+      "quantity": 35,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-19",
+      "productId": "prod-spice-3",
+      "productName": "MDH Garam Masala 100g",
+      "quantity": 42,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-20",
+      "productId": "prod-care-1",
+      "productName": "Colgate Strong Teeth Toothpaste 150g",
+      "quantity": 55,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-21",
+      "productId": "prod-care-2",
+      "productName": "Dettol Liquid Handwash Original 200ml",
+      "quantity": 28,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-22",
+      "productId": "prod-care-3",
+      "productName": "Lifebuoy Total 10 Soap Bar 125g",
+      "quantity": 70,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-23",
+      "productId": "prod-house-1",
+      "productName": "Vim Dishwash Liquid Gel Lemon 500ml",
+      "quantity": 45,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-24",
+      "productId": "prod-house-2",
+      "productName": "Surf Excel Easy Wash Detergent 1kg",
+      "quantity": 32,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    },
+    {
+      "id": "txn-init-25",
+      "productId": "prod-house-3",
+      "productName": "Lizol Disinfectant Floor Cleaner Citrus 1L",
+      "quantity": 20,
+      "type": "STOCK_IN",
+      "reason": "INITIAL_STOCK_SEED",
+      "createdAt": "2026-06-19T15:16:52.970Z"
+    }
+  ]
+}
