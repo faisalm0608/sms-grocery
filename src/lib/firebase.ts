@@ -3,13 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB9Oe-815QvgQ18T98k1HyUt_UG_q6gXE4",
-  authDomain: "sms-grocery-shop.firebaseapp.com",
-  projectId: "sms-grocery-shop",
-  storageBucket: "sms-grocery-shop.firebasestorage.app",
-  messagingSenderId: "123600906132",
-  appId: "1:123600906132:web:1cd5ff085797d2ddb91181",
-  measurementId: "G-R746QLBE0X"
+  apiKey: "AIzaSyCEIMt1MANtgOfao3vGpGQ32B8ASGearuo",
+  authDomain: "sms-grocery-shop-79ef1.firebaseapp.com",
+  projectId: "sms-grocery-shop-79ef1",
+  storageBucket: "sms-grocery-shop-79ef1.firebasestorage.app",
+  messagingSenderId: "283851129301",
+  appId: "1:283851129301:web:f86a7551707baa9736fd5c",
+  measurementId: "G-ZQJXKWN5DX"
 };
 
 // Initialize Firebase
