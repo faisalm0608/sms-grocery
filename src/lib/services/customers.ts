@@ -49,7 +49,13 @@ export const customersService = {
     try {
       const cleaned = mobile.replace(/\D/g, '');
       const docRef = doc(db, "customers", cleaned);
-      const docSnap = await getDoc(docRef);
+      
+      const fetchPromise = getDoc(docRef);
+      const timeoutPromise = new Promise<any>((_, reject) =>
+        setTimeout(() => reject(new Error('Profile fetch timed out')), 5000)
+      );
+      
+      const docSnap = await Promise.race([fetchPromise, timeoutPromise]);
       if (docSnap.exists()) {
         const data = docSnap.data();
         return {
@@ -74,7 +80,12 @@ export const customersService = {
     try {
       const cleaned = mobile.replace(/\D/g, '');
       const docRef = doc(db, "customers", cleaned);
-      const docSnap = await getDoc(docRef);
+      
+      const fetchPromise = getDoc(docRef);
+      const getTimeoutPromise = new Promise<any>((_, reject) =>
+        setTimeout(() => reject(new Error('Profile fetch timed out')), 5000)
+      );
+      const docSnap = await Promise.race([fetchPromise, getTimeoutPromise]);
       const now = new Date().toISOString();
       
       if (docSnap.exists()) {
@@ -84,7 +95,13 @@ export const customersService = {
           address: address || existingData.address || '',
           updatedAt: now
         };
-        await updateDoc(docRef, updatedData);
+        
+        const updatePromise = updateDoc(docRef, updatedData);
+        const updateTimeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Profile update timed out')), 5000)
+        );
+        await Promise.race([updatePromise, updateTimeoutPromise]);
+
         return {
           id: cleaned,
           mobileNumber: cleaned,
@@ -106,7 +123,13 @@ export const customersService = {
           createdAt: now,
           updatedAt: now
         };
-        await setDoc(docRef, newData);
+        
+        const createPromise = setDoc(docRef, newData);
+        const createTimeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Profile creation timed out')), 5000)
+        );
+        await Promise.race([createPromise, createTimeoutPromise]);
+
         return newData as Customer;
       }
     } catch (e) {

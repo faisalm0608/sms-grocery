@@ -1,65 +1,219 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth, db } from '@/lib/firebase';
-import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
-import { collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
-import { ChevronRight, Store, Loader2, ArrowLeft, ShieldCheck, Mail, MapPin, Phone } from 'lucide-react';
+import { 
+  RecaptchaVerifier, 
+  signInWithPhoneNumber, 
+  signOut 
+} from 'firebase/auth';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { 
+  ChevronRight, 
+  Store, 
+  Loader2, 
+  ArrowLeft, 
+  ShieldCheck, 
+  MapPin, 
+  Phone, 
+  Lock, 
+  User 
+} from 'lucide-react';
 import Link from 'next/link';
 
 export default function CustomerLogin() {
   const router = useRouter();
+  
+  // Login Steps: 1 = Phone Input, 2 = OTP Input, 3 = New User Registration
+  const [step, setStep] = useState<1 | 2 | 3>(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   
-  // Registration state for new Google users
-  const [isNewUser, setIsNewUser] = useState(false);
-  const [googleUser, setGoogleUser] = useState<any>(null);
+  // Input fields
   const [mobile, setMobile] = useState('');
+  const [otp, setOtp] = useState('');
+  const [name, setName] = useState('');
   const [address, setAddress] = useState('');
 
-  const handleGoogleLogin = async () => {
-    setError('');
-    setLoading(true);
-    try {
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
+  // Firebase auth references
+  const [confirmationResult, setConfirmationResult] = useState<any>(null);
+  const [authUser, setAuthUser] = useState<any>(null);
+  const recaptchaVerifierRef = useRef<any>(null);
 
-      if (!user.email) {
-        throw new Error('Could not retrieve email from Google Account.');
+  // OTP resend timer countdown
+  const [countdown, setCountdown] = useState(0);
+
+  useEffect(() => {
+    let timer: any;
+    if (countdown > 0) {
+      timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+    }
+    return () => clearTimeout(timer);
+  }, [countdown]);
+
+  // Clean up recaptcha widget on unmount
+  useEffect(() => {
+    return () => {
+      if (recaptchaVerifierRef.current) {
+        try {
+          recaptchaVerifierRef.current.clear();
+        } catch (e) {
+          console.error('Recaptcha clear error:', e);
+        }
+      }
+    };
+  }, []);
+
+  const setupRecaptcha = () => {
+    setError('');
+    try {
+      if (recaptchaVerifierRef.current) {
+        return recaptchaVerifierRef.current;
       }
 
-      // Query Firestore to check if a customer profile already exists for this Google email (with timeout)
-      const q = query(collection(db, "customers"), where("email", "==", user.email));
-      const queryPromise = getDocs(q);
-      const queryTimeoutPromise = new Promise<any>((_, reject) => 
-        setTimeout(() => reject(new Error('Connection timed out. Please check if your internet connection is active, or if firestore.googleapis.com is blocked by an ad-blocker or firewall.')), 8000)
+      const verifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+        size: 'invisible',
+        callback: () => {
+          // reCAPTCHA solved
+          console.log('reCAPTCHA solved successfully');
+        },
+        'expired-callback': () => {
+          setError('reCAPTCHA expired. Please try sending OTP again.');
+          setLoading(false);
+        }
+      });
+      recaptchaVerifierRef.current = verifier;
+      return verifier;
+    } catch (err: any) {
+      console.error('Recaptcha initialization error:', err);
+      setError('Failed to initialize security verifier. Please refresh the page.');
+      return null;
+    }
+  };
+
+  const handleSendOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    const cleanMobile = mobile.replace(/\D/g, '');
+
+    if (cleanMobile.length !== 10) {
+      setError('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const appVerifier = setupRecaptcha();
+      if (!appVerifier) {
+        setLoading(false);
+        return;
+      }
+
+      // Firebase Phone Auth expects E.164 country format (+91 for India)
+      const formattedPhoneNumber = `+91${cleanMobile}`;
+      
+      const sendPromise = signInWithPhoneNumber(auth, formattedPhoneNumber, appVerifier);
+      const timeoutPromise = new Promise<any>((_, reject) => 
+        setTimeout(() => reject(new Error('OTP request timed out. Please verify your internet connection or check if Firebase services are blocked.')), 10000)
       );
 
-      const querySnapshot = await Promise.race([queryPromise, queryTimeoutPromise]);
+      const result = await Promise.race([sendPromise, timeoutPromise]);
       
-      let existingCustomer: any = null;
-      querySnapshot.forEach((doc: any) => {
-        existingCustomer = doc.data();
-      });
+      setConfirmationResult(result);
+      setStep(2);
+      setCountdown(30); // Start 30s resend cooldown
+    } catch (err: any) {
+      console.error('SMS sending error:', err);
+      if (err.code === 'auth/invalid-phone-number') {
+        setError('Invalid mobile number format.');
+      } else if (err.code === 'auth/too-many-requests') {
+        setError('Too many OTP attempts. Please wait a few minutes before trying again.');
+      } else {
+        setError(err.message || 'Failed to send OTP code. Please try again.');
+      }
+      // Reset recaptcha widget if it fails
+      if (recaptchaVerifierRef.current) {
+        try {
+          recaptchaVerifierRef.current.clear();
+          recaptchaVerifierRef.current = null;
+        } catch (e) {}
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
-      if (existingCustomer) {
-        // Customer profile exists, redirect to storefront
+  const handleResendOtp = async () => {
+    if (countdown > 0 || loading) return;
+    setError('');
+    setLoading(true);
+    const cleanMobile = mobile.replace(/\D/g, '');
+    try {
+      const appVerifier = setupRecaptcha();
+      if (!appVerifier) {
+        setLoading(false);
+        return;
+      }
+      const formattedPhoneNumber = `+91${cleanMobile}`;
+      const result = await signInWithPhoneNumber(auth, formattedPhoneNumber, appVerifier);
+      setConfirmationResult(result);
+      setCountdown(60); // 60s cooldown on second attempt
+      setOtp('');
+    } catch (err: any) {
+      console.error('Resend OTP error:', err);
+      setError(err.message || 'Failed to resend verification code.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (otp.length !== 6) {
+      setError('Please enter the 6-digit OTP code sent to your phone.');
+      return;
+    }
+
+    if (!confirmationResult) {
+      setError('Verification session expired. Please enter your mobile number again.');
+      setStep(1);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const verifyPromise = confirmationResult.confirm(otp);
+      const timeoutPromise = new Promise<any>((_, reject) =>
+        setTimeout(() => reject(new Error('OTP verification timed out. Please check your network connection.')), 8000)
+      );
+
+      const result = await Promise.race([verifyPromise, timeoutPromise]);
+      const user = result.user;
+      setAuthUser(user);
+
+      // check if customer profile document exists in Firestore
+      const cleanMobile = mobile.replace(/\D/g, '');
+      const docRef = doc(db, "customers", cleanMobile);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        // Customer profile already exists, redirect to storefront
         router.push('/');
       } else {
         // New user! Display registration details to collect mobile & address
-        setGoogleUser(user);
-        setIsNewUser(true);
+        setStep(3);
       }
     } catch (err: any) {
-      console.error('Google login error:', err);
-      if (err.code === 'auth/popup-closed-by-user') {
-        setError('Login cancelled. Please try again.');
+      console.error('OTP code verification error:', err);
+      if (err.code === 'auth/invalid-verification-code') {
+        setError('Incorrect verification code. Please check and try again.');
       } else {
-        setError(err.message || 'Google Sign-in failed. Please try again.');
+        setError(err.message || 'Failed to verify verification code.');
       }
+    } finally {
       setLoading(false);
     }
   };
@@ -67,30 +221,34 @@ export default function CustomerLogin() {
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    const cleanMobile = mobile.replace(/\D/g, '');
-    
-    if (cleanMobile.length !== 10) {
-      setError('Please enter a valid 10-digit mobile number.');
+
+    if (!name.trim()) {
+      setError('Please enter your name.');
       return;
     }
 
-    if (!googleUser) {
-      setError('Session expired. Please sign in with Google again.');
-      setIsNewUser(false);
+    if (!address.trim()) {
+      setError('Please enter your delivery address.');
+      return;
+    }
+
+    if (!authUser) {
+      setError('Session expired. Please start the login process again.');
+      setStep(1);
       return;
     }
 
     setLoading(true);
     try {
-      // Check if this mobile number is already registered under another account
+      const cleanMobile = mobile.replace(/\D/g, '');
       const docRef = doc(db, "customers", cleanMobile);
       const now = new Date().toISOString();
 
       const newCustomer = {
         id: cleanMobile,
         mobileNumber: cleanMobile,
-        name: googleUser.displayName || 'Valued Customer',
-        email: googleUser.email,
+        name: name.trim(),
+        email: authUser.email || '',
         address: address.trim(),
         totalSpend: 0,
         loyaltyPoints: 0,
@@ -98,35 +256,42 @@ export default function CustomerLogin() {
         updatedAt: now
       };
 
-      // Save customer profile in Firestore with a timeout to avoid silent hangs
       const writePromise = setDoc(docRef, newCustomer);
-      const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Database connection timed out. Please verify that your Cloud Firestore API is enabled, or check if an ad-blocker / firewall is blocking firestore.googleapis.com.')), 8000)
+      const timeoutPromise = new Promise<any>((_, reject) => 
+        setTimeout(() => reject(new Error('Firestore profile creation timed out.')), 8000)
       );
 
       await Promise.race([writePromise, timeoutPromise]);
-
-      // Successfully registered and logged in, redirect to store
+      
+      // Profile created, redirect to home page
       router.push('/');
     } catch (err: any) {
-      console.error('Customer registration error:', err);
-      setError(err.message || 'Failed to complete registration. Try again.');
+      console.error('Profile creation error:', err);
+      setError(err.message || 'Failed to complete profile registration. Try again.');
+    } finally {
       setLoading(false);
     }
   };
 
-  const handleCancelRegistration = async () => {
+  const handleBackToPhone = async () => {
+    setError('');
+    setLoading(true);
     try {
       await signOut(auth);
     } catch (e) {}
-    setIsNewUser(false);
-    setGoogleUser(null);
+    setConfirmationResult(null);
+    setAuthUser(null);
+    setOtp('');
+    setStep(1);
     setLoading(false);
   };
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-background text-foreground transition-colors p-4 md:p-8">
       
+      {/* Invisible Recaptcha target */}
+      <div id="recaptcha-container" />
+
       {/* Header */}
       <header className="max-w-7xl mx-auto w-full flex items-center justify-between py-4 border-b border-border-color/30">
         <Link href="/" className="flex items-center gap-2 text-foreground/80 hover:text-foreground font-bold transition-all">
@@ -139,7 +304,7 @@ export default function CustomerLogin() {
         </div>
       </header>
 
-      {/* Main Form container */}
+      {/* Main Container */}
       <main className="flex-1 flex items-center justify-center py-12">
         <div className="w-full max-w-md bg-card-bg rounded-3xl border border-border-color p-8 shadow-2xl space-y-6 relative overflow-hidden transition-all duration-300 animate-scale-in">
           
@@ -152,8 +317,8 @@ export default function CustomerLogin() {
             </div>
           )}
 
-          {!isNewUser ? (
-            /* Step 1: Google Login Button */
+          {step === 1 && (
+            /* Step 1: Mobile Number Entry */
             <div className="space-y-6">
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-1.5 rounded-lg bg-primary/10 px-3 py-1 text-xs text-primary font-bold">
@@ -162,60 +327,17 @@ export default function CustomerLogin() {
                 </div>
                 <h1 className="text-3xl font-black tracking-tight text-foreground">Customer Login</h1>
                 <p className="text-sm text-foreground/50 leading-relaxed">
-                  Sign in with Google to manage orders, checkout your cart, and track grocery deliveries.
+                  Enter your 10-digit mobile number to verify your identity and manage checkout orders.
                 </p>
               </div>
 
-              <button
-                type="button"
-                onClick={handleGoogleLogin}
-                disabled={loading}
-                className="w-full flex items-center justify-center gap-3 rounded-2xl border border-border-color bg-background py-3.5 text-sm font-bold text-foreground hover:bg-foreground/5 hover:border-foreground/20 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="h-5 w-5 animate-spin text-primary" />
-                    <span>Signing in...</span>
-                  </>
-                ) : (
-                  <>
-                    {/* Google SVG Icon */}
-                    <svg className="h-5 w-5" viewBox="0 0 24 24">
-                      <path
-                        fill="#EA4335"
-                        d="M12.24 10.285V14.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l3.28-3.154C18.257 1.97 15.49 1 12.24 1 5.926 1 .8 6.002.8 12.2s5.126 11.2 11.44 11.2c6.6 0 11-4.643 11-11.2 0-.756-.08-1.334-.18-1.915H12.24z"
-                      />
-                    </svg>
-                    <span>Continue with Google</span>
-                  </>
-                )}
-              </button>
-
-              <div className="pt-4 border-t border-border-color/30 flex items-center justify-between text-xs">
-                <span className="text-foreground/45">Are you the owner?</span>
-                <Link href="/admin/login" className="text-primary font-bold hover:underline">
-                  Owner Dashboard Login
-                </Link>
-              </div>
-            </div>
-          ) : (
-            /* Step 2: Customer Mobile & Address Form */
-            <div className="space-y-6 animate-fade-in">
-              <div className="space-y-2">
-                <h2 className="text-2xl font-black tracking-tight text-foreground">Complete Profile</h2>
-                <p className="text-sm text-foreground/50 leading-relaxed">
-                  Hi **{googleUser?.displayName}**, please provide your phone number and address to finish setting up your account.
-                </p>
-              </div>
-
-              <form onSubmit={handleRegisterSubmit} className="space-y-4">
-                {/* Mobile number */}
+              <form onSubmit={handleSendOtp} className="space-y-4">
                 <div className="space-y-1.5">
                   <label className="block text-xs font-black text-foreground/60 uppercase tracking-widest">
                     Mobile Number
                   </label>
                   <div className="relative">
-                    <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-foreground/40 font-bold text-sm">
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-foreground/45 font-bold text-sm">
                       +91
                     </span>
                     <input
@@ -225,6 +347,137 @@ export default function CustomerLogin() {
                       placeholder="Enter 10-digit mobile number"
                       maxLength={10}
                       className="w-full rounded-2xl border border-border-color bg-background/50 py-3.5 pl-14 pr-4 text-sm font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      disabled={loading}
+                      required
+                      autoFocus
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full flex items-center justify-center gap-2 rounded-2xl bg-primary py-3.5 text-sm font-black text-white hover:bg-primary-hover shadow-lg shadow-primary/20 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50"
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Sending OTP...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Verification OTP</span>
+                      <ChevronRight className="h-4 w-4" />
+                    </>
+                  )}
+                </button>
+              </form>
+
+              <div className="pt-4 border-t border-border-color/30 flex items-center justify-between text-xs">
+                <span className="text-foreground/45">Are you the owner?</span>
+                <Link href="/admin/login" className="text-primary font-bold hover:underline">
+                  Owner Dashboard Login
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {step === 2 && (
+            /* Step 2: OTP Verification Code Entry */
+            <div className="space-y-6 animate-fade-in">
+              <div className="space-y-2">
+                <h2 className="text-2xl font-black tracking-tight text-foreground">Verify OTP</h2>
+                <p className="text-sm text-foreground/50 leading-relaxed">
+                  We sent a 6-digit verification code to the number **+91 {mobile}**.
+                </p>
+              </div>
+
+              <form onSubmit={handleVerifyOtp} className="space-y-4">
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-black text-foreground/60 uppercase tracking-widest">
+                    Verification Code
+                  </label>
+                  <div className="relative">
+                    <Lock className="absolute left-4 top-3.5 h-4.5 w-4.5 text-foreground/40" />
+                    <input
+                      type="text"
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
+                      placeholder="Enter 6-digit verification code"
+                      maxLength={6}
+                      className="w-full rounded-2xl border border-border-color bg-background/50 py-3.5 pl-12 pr-4 text-sm font-bold text-center tracking-widest text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      disabled={loading}
+                      required
+                      autoFocus
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full flex items-center justify-center gap-2 rounded-2xl bg-primary py-3.5 text-sm font-black text-white hover:bg-primary-hover shadow-lg shadow-primary/20 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50"
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Verifying...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Verify and Login</span>
+                      <ChevronRight className="h-4 w-4" />
+                    </>
+                  )}
+                </button>
+
+                <div className="flex flex-col gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={handleResendOtp}
+                    disabled={countdown > 0 || loading}
+                    className="text-center text-xs font-bold text-primary disabled:text-foreground/30 hover:underline transition-all cursor-pointer"
+                  >
+                    {countdown > 0 ? `Resend OTP code in ${countdown}s` : 'Resend OTP verification code'}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleBackToPhone}
+                    disabled={loading}
+                    className="text-center text-xs text-foreground/45 hover:text-foreground hover:underline font-bold transition-all py-1 cursor-pointer"
+                  >
+                    Back to Mobile Number Entry
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {step === 3 && (
+            /* Step 3: Complete Customer Registration Details */
+            <div className="space-y-6 animate-fade-in">
+              <div className="space-y-2">
+                <h2 className="text-2xl font-black tracking-tight text-foreground">Create Profile</h2>
+                <p className="text-sm text-foreground/50 leading-relaxed">
+                  Your phone number **+91 {mobile}** is verified! Please enter your name and delivery address to finish your profile setup.
+                </p>
+              </div>
+
+              <form onSubmit={handleRegisterSubmit} className="space-y-4">
+                {/* Name */}
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-black text-foreground/60 uppercase tracking-widest">
+                    Your Name
+                  </label>
+                  <div className="relative">
+                    <User className="absolute left-4 top-3.5 h-4.5 w-4.5 text-foreground/40" />
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Enter your full name"
+                      className="w-full rounded-2xl border border-border-color bg-background/50 py-3.5 pl-12 pr-4 text-sm font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                       disabled={loading}
                       required
                       autoFocus
@@ -271,11 +524,11 @@ export default function CustomerLogin() {
 
                 <button
                   type="button"
-                  onClick={handleCancelRegistration}
+                  onClick={handleBackToPhone}
                   disabled={loading}
                   className="w-full text-center text-xs text-foreground/45 hover:text-foreground hover:underline font-bold transition-all py-1 cursor-pointer"
                 >
-                  Cancel Sign-in
+                  Cancel and Sign-out
                 </button>
               </form>
             </div>
