@@ -31,12 +31,17 @@ export default function CustomerLogin() {
         throw new Error('Could not retrieve email from Google Account.');
       }
 
-      // Query Firestore to check if a customer profile already exists for this Google email
+      // Query Firestore to check if a customer profile already exists for this Google email (with timeout)
       const q = query(collection(db, "customers"), where("email", "==", user.email));
-      const querySnapshot = await getDocs(q);
+      const queryPromise = getDocs(q);
+      const queryTimeoutPromise = new Promise<any>((_, reject) => 
+        setTimeout(() => reject(new Error('Connection timed out. Please check if your internet connection is active, or if firestore.googleapis.com is blocked by an ad-blocker or firewall.')), 8000)
+      );
+
+      const querySnapshot = await Promise.race([queryPromise, queryTimeoutPromise]);
       
       let existingCustomer: any = null;
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach((doc: any) => {
         existingCustomer = doc.data();
       });
 
@@ -93,8 +98,13 @@ export default function CustomerLogin() {
         updatedAt: now
       };
 
-      // Save customer profile in Firestore
-      await setDoc(docRef, newCustomer);
+      // Save customer profile in Firestore with a timeout to avoid silent hangs
+      const writePromise = setDoc(docRef, newCustomer);
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Database connection timed out. Please verify that your Cloud Firestore API is enabled, or check if an ad-blocker / firewall is blocking firestore.googleapis.com.')), 8000)
+      );
+
+      await Promise.race([writePromise, timeoutPromise]);
 
       // Successfully registered and logged in, redirect to store
       router.push('/');

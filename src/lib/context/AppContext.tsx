@@ -101,8 +101,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
               const { db } = await import('@/lib/firebase');
               const { collection, query, where, getDocs } = await import('firebase/firestore');
               const q = query(collection(db, "customers"), where("email", "==", email));
-              const querySnapshot = await getDocs(q);
-              querySnapshot.forEach((doc) => {
+              
+              const queryPromise = getDocs(q);
+              const queryTimeoutPromise = new Promise<any>((_, reject) =>
+                setTimeout(() => reject(new Error('Profile fetch timed out')), 5000)
+              );
+              const querySnapshot = await Promise.race([queryPromise, queryTimeoutPromise]);
+              
+              querySnapshot.forEach((doc: any) => {
                 const data = doc.data();
                 mobile = data.mobileNumber || '';
                 name = data.name || 'Valued Customer';
