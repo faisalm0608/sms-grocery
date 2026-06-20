@@ -94,19 +94,37 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
           role = 'ADMIN';
           name = 'Mohammad Ali Jinnah (Owner)';
           mobile = '9788045564';
-        } else if (phoneNumber) {
+        } else {
           role = 'CUSTOMER';
-          mobile = phoneNumber.replace(/\D/g, '');
-          if (mobile.startsWith('91') && mobile.length > 10) {
-            mobile = mobile.substring(2);
-          }
-          try {
-            const profile = await customersService.getCustomerByMobile(mobile);
-            if (profile) {
-              name = profile.name;
+          if (email) {
+            try {
+              const { db } = await import('@/lib/firebase');
+              const { collection, query, where, getDocs } = await import('firebase/firestore');
+              const q = query(collection(db, "customers"), where("email", "==", email));
+              const querySnapshot = await getDocs(q);
+              querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                mobile = data.mobileNumber || '';
+                name = data.name || 'Valued Customer';
+              });
+            } catch (e) {
+              console.error("Failed to load customer profile by email:", e);
             }
-          } catch (e) {
-            console.error("Failed to load customer profile during auth sync:", e);
+          }
+          
+          if (!mobile && phoneNumber) {
+            mobile = phoneNumber.replace(/\D/g, '');
+            if (mobile.startsWith('91') && mobile.length > 10) {
+              mobile = mobile.substring(2);
+            }
+            try {
+              const profile = await customersService.getCustomerByMobile(mobile);
+              if (profile) {
+                name = profile.name;
+              }
+            } catch (e) {
+              console.error("Failed to load customer profile during phone sync:", e);
+            }
           }
         }
         
