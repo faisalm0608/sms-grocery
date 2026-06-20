@@ -72,13 +72,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </button>
             <button
               onClick={() => {
-                // Trigger LoginModal in header by logging out first
                 logout();
-                router.push('/');
+                router.push('/admin/login');
               }}
               className="flex-1 rounded-xl bg-primary py-3 text-xs font-bold text-white hover:bg-primary-hover shadow-md transition-all cursor-pointer"
             >
-              Verify Owner OTP
+              Admin Login
             </button>
           </div>
         </div>

@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
-import LoginModal from '@/components/shared/LoginModal';
 import { useApp } from '@/lib/context/AppContext';
 import { ShoppingBag, ArrowLeft, Plus, Minus, Trash2, MapPin, Clock, CreditCard, Check, AlertTriangle, ShieldCheck } from 'lucide-react';
 import QRCode from 'qrcode';
@@ -60,7 +59,7 @@ export default function Cart() {
     setError('');
 
     if (!user) {
-      setIsLoginOpen(true);
+      router.push('/login');
       return;
     }
 
@@ -512,7 +511,6 @@ export default function Cart() {
       </main>
 
       <Footer />
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </div>
   );
 }

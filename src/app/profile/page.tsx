@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import CartDrawer from '@/components/customer/CartDrawer';
-import LoginModal from '@/components/shared/LoginModal';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
 import { useApp } from '@/lib/context/AppContext';
 import { User, MapPin, Calendar, Clock, ShoppingBag, Gift, ArrowRight, Award, Compass, CreditCard } from 'lucide-react';
@@ -102,7 +101,7 @@ export default function Profile() {
               Please log in with your mobile number to view your past purchases and track active bills.
             </p>
             <button
-              onClick={() => setIsLoginOpen(true)}
+              onClick={() => router.push('/login')}
               className="mt-6 rounded-xl bg-primary px-8 py-3 text-sm font-black text-white hover:bg-primary-hover shadow-md transition-all cursor-pointer"
             >
               Verify Mobile Number
@@ -269,7 +268,6 @@ export default function Profile() {
 
       <Footer />
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
       <WhatsAppButton />
     </div>
   );

@@ -1,6 +1,16 @@
-import { prisma, hasPostgresDb } from '../db';
-import { getLocalDb, saveLocalDb, OrderMock, OrderItemMock } from './jsonDb';
+import { db } from '../firebase';
+import { 
+  collection, 
+  getDocs, 
+  doc, 
+  getDoc, 
+  setDoc, 
+  updateDoc, 
+  query, 
+  where 
+} from 'firebase/firestore';
 import { productsService } from './products';
+import { customersService } from './customers';
 
 export interface OrderInputItem {
   productId: string;
@@ -19,6 +29,37 @@ export interface OrderInput {
   upiTxnId?: string;
 }
 
+export interface OrderItemMock {
+  id: string;
+  productId: string;
+  productName: string;
+  quantity: number;
+  purchasePrice: number;
+  sellingPrice: number;
+}
+
+export interface OrderMock {
+  id: string;
+  orderId: string;
+  customerId: string;
+  customerName: string;
+  customerMobile: string;
+  customerAddress: string;
+  pickupTime: string;
+  totalAmount: number;
+  amount: number;
+  tax: number;
+  discount: number;
+  status: 'PENDING' | 'ACCEPTED' | 'PACKING' | 'READY_FOR_PICKUP' | 'COMPLETED' | 'CANCELLED';
+  orderStatus: 'PENDING' | 'ACCEPTED' | 'PACKING' | 'READY_FOR_PICKUP' | 'COMPLETED' | 'CANCELLED';
+  paymentStatus: 'PENDING' | 'COMPLETED';
+  upiTxnId?: string;
+  createdAt: string;
+  updatedAt: string;
+  products: OrderItemMock[];
+  items: OrderItemMock[];
+}
+
 export const ordersService = {
   async generateOrderId(): Promise<string> {
     const now = new Date();
@@ -28,71 +69,121 @@ export const ordersService = {
   },
 
   async getAllOrders() {
-    if (hasPostgresDb) {
-      return await prisma.order.findMany({
-        include: {
-          items: {
-            include: { product: true }
-          }
-        },
-        orderBy: { createdAt: 'desc' }
+    try {
+      const querySnapshot = await getDocs(collection(db, "orders"));
+      const orders: OrderMock[] = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        orders.push({
+          id: doc.id,
+          orderId: data.orderId || doc.id,
+          customerId: data.customerId || '',
+          customerName: data.customerName || '',
+          customerMobile: data.customerMobile || '',
+          customerAddress: data.customerAddress || '',
+          pickupTime: data.pickupTime || '',
+          totalAmount: data.totalAmount || data.amount || 0,
+          amount: data.amount || 0,
+          tax: data.tax || 0,
+          discount: data.discount || 0,
+          status: data.status || data.orderStatus || 'PENDING',
+          orderStatus: data.orderStatus || 'PENDING',
+          paymentStatus: data.paymentStatus || 'PENDING',
+          upiTxnId: data.upiTxnId || '',
+          createdAt: data.createdAt || new Date().toISOString(),
+          updatedAt: data.updatedAt || new Date().toISOString(),
+          products: data.products || [],
+          items: data.items || data.products || []
+        });
       });
-    } else {
-      const db = getLocalDb();
-      // sort desc
-      return db.orders.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+      // Sort desc by createdAt
+      return orders.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    } catch (e) {
+      console.error("Firestore getAllOrders error:", e);
+      return [];
     }
   },
 
   async getOrderById(id: string) {
-    if (hasPostgresDb) {
-      return await prisma.order.findUnique({
-        where: { id },
-        include: {
-          items: {
-            include: { product: true }
-          }
-        }
-      });
-    } else {
-      const db = getLocalDb();
-      const order = db.orders.find(o => o.id === id);
-      return order || null;
+    try {
+      const docRef = doc(db, "orders", id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        return {
+          id: docSnap.id,
+          orderId: data.orderId || docSnap.id,
+          customerId: data.customerId || '',
+          customerName: data.customerName || '',
+          customerMobile: data.customerMobile || '',
+          customerAddress: data.customerAddress || '',
+          pickupTime: data.pickupTime || '',
+          totalAmount: data.totalAmount || data.amount || 0,
+          amount: data.amount || 0,
+          tax: data.tax || 0,
+          discount: data.discount || 0,
+          status: data.status || data.orderStatus || 'PENDING',
+          orderStatus: data.orderStatus || 'PENDING',
+          paymentStatus: data.paymentStatus || 'PENDING',
+          upiTxnId: data.upiTxnId || '',
+          createdAt: data.createdAt || new Date().toISOString(),
+          updatedAt: data.updatedAt || new Date().toISOString(),
+          products: data.products || [],
+          items: data.items || data.products || []
+        } as OrderMock;
+      }
+      return null;
+    } catch (e) {
+      console.error("Firestore getOrderById error:", e);
+      return null;
     }
   },
 
   async getOrdersByCustomerMobile(mobile: string) {
-    if (hasPostgresDb) {
-      return await prisma.order.findMany({
-        where: { customerMobile: mobile },
-        include: {
-          items: {
-            include: { product: true }
-          }
-        },
-        orderBy: { createdAt: 'desc' }
+    try {
+      const cleaned = mobile.replace(/\D/g, '');
+      const q = query(collection(db, "orders"), where("customerId", "==", cleaned));
+      const querySnapshot = await getDocs(q);
+      const orders: OrderMock[] = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        orders.push({
+          id: doc.id,
+          orderId: data.orderId || doc.id,
+          customerId: data.customerId || '',
+          customerName: data.customerName || '',
+          customerMobile: data.customerMobile || '',
+          customerAddress: data.customerAddress || '',
+          pickupTime: data.pickupTime || '',
+          totalAmount: data.totalAmount || data.amount || 0,
+          amount: data.amount || 0,
+          tax: data.tax || 0,
+          discount: data.discount || 0,
+          status: data.status || data.orderStatus || 'PENDING',
+          orderStatus: data.orderStatus || 'PENDING',
+          paymentStatus: data.paymentStatus || 'PENDING',
+          upiTxnId: data.upiTxnId || '',
+          createdAt: data.createdAt || new Date().toISOString(),
+          updatedAt: data.updatedAt || new Date().toISOString(),
+          products: data.products || [],
+          items: data.items || data.products || []
+        });
       });
-    } else {
-      const db = getLocalDb();
-      return db.orders
-        .filter(o => o.customerMobile === mobile)
-        .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+      // Sort desc by createdAt
+      return orders.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    } catch (e) {
+      console.error("Firestore getOrdersByCustomerMobile error:", e);
+      return [];
     }
   },
 
   async createOrder(input: OrderInput) {
     const now = new Date();
     const orderId = await this.generateOrderId();
+    const cleanedMobile = input.customerMobile.replace(/\D/g, '');
     
     // Resolve products to calculate total and snapshot prices
-    const resolvedItems: { 
-      productId: string; 
-      productName: string;
-      quantity: number; 
-      purchasePrice: number; 
-      sellingPrice: number; 
-    }[] = [];
-    
+    const resolvedItems: OrderItemMock[] = [];
     let subtotal = 0;
     
     // Fetch products and adjust stock
@@ -104,6 +195,7 @@ export const ordersService = {
       }
       
       resolvedItems.push({
+        id: `item-${orderId}-${resolvedItems.length}`,
         productId: item.productId,
         productName: p.name,
         quantity: item.quantity,
@@ -123,172 +215,136 @@ export const ordersService = {
 
     // Update or Create Customer spend stats
     const loyaltyPointsEarned = Math.floor(totalAmount / 10); // 1 point per 10 INR
-    await this.updateCustomerStats(input.customerMobile, input.customerName, input.customerAddress, totalAmount, loyaltyPointsEarned);
+    await this.updateCustomerStats(cleanedMobile, input.customerName, input.customerAddress, totalAmount, loyaltyPointsEarned);
 
-    if (hasPostgresDb) {
-      return await prisma.order.create({
-        data: {
-          id: orderId,
-          customerName: input.customerName,
-          customerMobile: input.customerMobile,
-          customerAddress: input.customerAddress,
-          pickupTime: input.pickupTime || null,
-          totalAmount,
-          tax,
-          discount,
-          status: 'PENDING',
-          paymentStatus: input.paymentStatus || 'PENDING',
-          upiTxnId: input.upiTxnId || null,
-          items: {
-            create: resolvedItems.map(item => ({
-              productId: item.productId,
-              quantity: item.quantity,
-              purchasePrice: item.purchasePrice,
-              sellingPrice: item.sellingPrice
-            }))
-          }
-        },
-        include: {
-          items: true
-        }
-      });
-    } else {
-      const db = getLocalDb();
-      const newItems: OrderItemMock[] = resolvedItems.map((item, idx) => ({
-        id: `item-${orderId}-${idx}`,
-        productId: item.productId,
-        productName: item.productName,
-        quantity: item.quantity,
-        purchasePrice: item.purchasePrice,
-        sellingPrice: item.sellingPrice
-      }));
-
+    try {
       const newOrder: OrderMock = {
         id: orderId,
+        orderId: orderId,
+        customerId: cleanedMobile,
         customerName: input.customerName,
-        customerMobile: input.customerMobile,
+        customerMobile: cleanedMobile,
         customerAddress: input.customerAddress,
         pickupTime: input.pickupTime,
         totalAmount,
+        amount: totalAmount,
         tax,
         discount,
         status: 'PENDING',
+        orderStatus: 'PENDING',
         paymentStatus: input.paymentStatus || 'PENDING',
-        upiTxnId: input.upiTxnId,
+        upiTxnId: input.upiTxnId || '',
         createdAt: now.toISOString(),
         updatedAt: now.toISOString(),
-        items: newItems
+        products: resolvedItems,
+        items: resolvedItems
       };
 
-      db.orders.push(newOrder);
-      saveLocalDb(db);
+      await setDoc(doc(db, "orders", orderId), newOrder);
       return newOrder;
+    } catch (e) {
+      console.error("Firestore createOrder error:", e);
+      throw e;
     }
   },
 
   async updateOrderStatus(id: string, status: OrderMock['status']) {
     const now = new Date();
-    if (hasPostgresDb) {
-      return await prisma.order.update({
-        where: { id },
-        data: { status }
-      });
-    } else {
-      const db = getLocalDb();
-      const idx = db.orders.findIndex(o => o.id === id);
-      if (idx === -1) throw new Error('Order not found');
+    try {
+      const docRef = doc(db, "orders", id);
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.exists()) throw new Error('Order not found');
       
-      db.orders[idx].status = status;
-      db.orders[idx].updatedAt = now.toISOString();
+      const data = docSnap.data();
+      const updatedData: any = {
+        status,
+        orderStatus: status,
+        updatedAt: now.toISOString()
+      };
       
       // Auto mark completed payment if status is COMPLETED
       if (status === 'COMPLETED') {
-        db.orders[idx].paymentStatus = 'COMPLETED';
+        updatedData.paymentStatus = 'COMPLETED';
       }
       
+      await updateDoc(docRef, updatedData);
+
       // If cancelled, return stock
       if (status === 'CANCELLED') {
-        const order = db.orders[idx];
-        for (const item of order.items) {
+        const items = data.items || data.products || [];
+        for (const item of items) {
           await productsService.adjustStock(item.productId, item.quantity, 'STOCK_IN', `CANCEL: ${id}`);
         }
       }
       
-      saveLocalDb(db);
-      return db.orders[idx];
+      return {
+        ...data,
+        ...updatedData,
+        id
+      } as unknown as OrderMock;
+    } catch (e) {
+      console.error("Firestore updateOrderStatus error:", e);
+      throw e;
     }
   },
 
   async updatePaymentStatus(id: string, paymentStatus: 'PENDING' | 'COMPLETED', upiTxnId?: string) {
     const now = new Date();
-    if (hasPostgresDb) {
-      return await prisma.order.update({
-        where: { id },
-        data: { 
-          paymentStatus,
-          upiTxnId
-        }
-      });
-    } else {
-      const db = getLocalDb();
-      const idx = db.orders.findIndex(o => o.id === id);
-      if (idx === -1) throw new Error('Order not found');
+    try {
+      const docRef = doc(db, "orders", id);
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.exists()) throw new Error('Order not found');
       
-      db.orders[idx].paymentStatus = paymentStatus;
-      if (upiTxnId) db.orders[idx].upiTxnId = upiTxnId;
-      db.orders[idx].updatedAt = now.toISOString();
+      const updatedData: any = {
+        paymentStatus,
+        updatedAt: now.toISOString()
+      };
+      if (upiTxnId) updatedData.upiTxnId = upiTxnId;
       
-      saveLocalDb(db);
-      return db.orders[idx];
+      await updateDoc(docRef, updatedData);
+      return {
+        ...docSnap.data(),
+        ...updatedData,
+        id
+      } as unknown as OrderMock;
+    } catch (e) {
+      console.error("Firestore updatePaymentStatus error:", e);
+      throw e;
     }
   },
 
   async updateCustomerStats(mobile: string, name: string, address: string, spend: number, points: number) {
-    const now = new Date();
-    if (hasPostgresDb) {
-      const customer = await prisma.customer.findUnique({ where: { mobileNumber: mobile } });
-      if (customer) {
-        await prisma.customer.update({
-          where: { mobileNumber: mobile },
-          data: {
-            name,
-            address,
-            totalSpend: customer.totalSpend + spend,
-            loyaltyPoints: customer.loyaltyPoints + points
-          }
+    const cleaned = mobile.replace(/\D/g, '');
+    try {
+      const custRef = doc(db, "customers", cleaned);
+      const custSnap = await getDoc(custRef);
+      const now = new Date().toISOString();
+      
+      if (custSnap.exists()) {
+        const data = custSnap.data();
+        const nextSpend = (data.totalSpend || 0) + spend;
+        const nextPoints = (data.loyaltyPoints || 0) + points;
+        await updateDoc(custRef, {
+          name,
+          address,
+          totalSpend: nextSpend,
+          loyaltyPoints: nextPoints,
+          updatedAt: now
         });
       } else {
-        await prisma.customer.create({
-          data: {
-            mobileNumber: mobile,
-            name,
-            address,
-            totalSpend: spend,
-            loyaltyPoints: points
-          }
-        });
-      }
-    } else {
-      const db = getLocalDb();
-      const idx = db.customers.findIndex(c => c.mobileNumber === mobile);
-      if (idx !== -1) {
-        db.customers[idx].name = name;
-        db.customers[idx].address = address;
-        db.customers[idx].totalSpend += spend;
-        db.customers[idx].loyaltyPoints += points;
-        db.customers[idx].updatedAt = now.toISOString();
-      } else {
-        db.customers.push({
-          mobileNumber: mobile,
+        await setDoc(custRef, {
+          id: cleaned,
+          mobileNumber: cleaned,
           name,
           address,
           totalSpend: spend,
           loyaltyPoints: points,
-          createdAt: now.toISOString(),
-          updatedAt: now.toISOString()
+          createdAt: now,
+          updatedAt: now
         });
       }
-      saveLocalDb(db);
+    } catch (e) {
+      console.error("Firestore updateCustomerStats error:", e);
     }
   }
 };

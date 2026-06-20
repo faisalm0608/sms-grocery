@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useApp } from '@/lib/context/AppContext';
 import { Search, ShoppingBag, Sun, Moon, User, LogOut, ShieldAlert, Store } from 'lucide-react';
-import LoginModal from './LoginModal';
 
 interface HeaderProps {
   onCartToggle?: () => void;
@@ -125,7 +124,7 @@ export default function Header({ onCartToggle }: HeaderProps) {
             </div>
           ) : (
             <button
-              onClick={() => setIsLoginOpen(true)}
+              onClick={() => router.push('/login')}
               className="flex items-center gap-1.5 rounded-full bg-foreground text-background px-4 py-2 text-xs md:text-sm font-bold hover:opacity-90 active:scale-95 transition-all cursor-pointer"
             >
               <User className="h-4 w-4" />
@@ -153,8 +152,6 @@ export default function Header({ onCartToggle }: HeaderProps) {
         </div>
       </div>
 
-      {/* Login Modal */}
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </header>
   );
 }
