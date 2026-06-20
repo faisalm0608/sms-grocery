@@ -267,7 +267,7 @@ export default function POSBilling() {
             <div className="text-center border-b border-dashed border-gray-400 pb-4">
               <h2 className="text-base font-black uppercase">SMS Grocery Shop</h2>
               <p className="text-[10px] text-gray-500 mt-0.5">Thanjavur, Tamil Nadu</p>
-              <p className="text-[10px] text-gray-500 font-bold">Owner: Mohammad Ali Jinnah (+91 9788045564)</p>
+              <p className="text-[10px] text-gray-500 font-bold">Owner: Mohammad Ali Jinnah</p>
             </div>
             
             <div className="py-4 space-y-1">
@@ -477,7 +477,7 @@ export default function POSBilling() {
                         setIsCustomerFound(false);
                         setIsNewCustomerForm(false);
                       }}
-                      placeholder="9788045564"
+                      placeholder="Enter mobile number"
                       className="flex-1 rounded-lg border border-border-color bg-background/50 px-3 py-2 text-xs font-bold text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
                       maxLength={10}
                     />

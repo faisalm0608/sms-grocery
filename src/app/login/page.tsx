@@ -128,7 +128,7 @@ export default function CustomerLogin() {
                   type="tel"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value.replace(/\D/g, ''))}
-                  placeholder="97880 45564"
+                  placeholder="Enter 10-digit mobile number"
                   maxLength={10}
                   className="w-full rounded-2xl border border-border-color bg-background/50 py-3.5 pl-14 pr-4 text-sm font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   disabled={loading}
